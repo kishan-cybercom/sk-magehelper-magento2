@@ -7,6 +7,7 @@
 namespace SK\StoreConfig\Controller\Index;
 
 use \Magento\Framework\App\Action\Context;
+use \Magento\Framework\View\Result\PageFactory;
 use \SK\StoreConfig\Helper\Data as SKHelper;
 
 class Index extends \Magento\Framework\App\Action\Action
@@ -15,13 +16,21 @@ class Index extends \Magento\Framework\App\Action\Action
 
 	public function __construct(
 		Context $context,
-		SKHelper $skHelper
+		SKHelper $skHelper,
+		PageFactory $resultPageFactory
 	){
 		$this->_skHelper = $skHelper;
+		$this->resultPageFactory = $resultPageFactory;
 		parent::__construct($context);
 	}
 
 	public function execute(){
-		echo $this->_skHelper->getConfig("test_section/test_group/test_field");
+		$resultPage = $this->resultPageFactory->create();
+		
+		$testFieldValue = $this->_skHelper->getConfig("test_section/test_group/test_field");
+
+        $resultPage->getConfig()->getTitle()->prepend(__($testFieldValue));
+ 
+        return $resultPage;
 	}
 }

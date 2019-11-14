@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">       
+    <referenceContainer name="content">
+        <block
+        	template="SK_StoreConfig::store_config.phtml"
+        	class="Magento\Framework\View\Element\Template"
+        	name = "store-config-test"/>
+    </referenceContainer>
+</page>
